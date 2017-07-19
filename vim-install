@@ -10,35 +10,67 @@ fi
 if [ "$PROCEED" != "y" ]; then
   exit
 fi
-PM=apt-get
-LM="dpkg -l"
-VIM=vim-nox
-CTAGS=exuberant-ctags
-REDHAT=
-if [ -f /etc/redhat-release ]; then
-  REDHAT=1
+
+
+lowercase(){
+    echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
+}
+
+OS=`lowercase \`uname\``
+KERNEL=`uname -r`
+MACH=`uname -m`
+
+if [ "{$OS}" == "windowsnt" ]; then
+    OS=windows
+elif [ "{$OS}" == "darwin" ]; then
+    OS=mac
+    PM=brew
+    LM="brew list"
+    VIM=vim
+    CTAGS=ctags
+    REDHAT=
+    INSTALL_PREFIX=
+else
+    OS=`uname`
+    if [ "${OS}" = "Linux" ] ; then
+      INSTALL_PREFIX="sudo"
+        if [ -f /etc/redhat-release ] ; then
+            DistroBasedOn='RedHat'
+            PM=yum
+            LM="rpm -qa"
+            VIM=vim-enhanced
+            CTAGS=ctags
+        elif [ -f /etc/debian_version ] ; then
+            DistroBasedOn='Debian'
+            PM=apt-get
+            LM="dpkg -l"
+            VIM=vim-nox
+            CTAGS=exuberant-ctags
+            REDHAT=
+        fi
+        if [ -f /etc/UnitedLinux-release ] ; then
+            DIST="${DIST}[`cat /etc/UnitedLinux-release | tr "\n" ' ' | sed s/VERSION.*//`]"
+        fi
+        OS=`lowercase $OS`
+        DistroBasedOn=`lowercase $DistroBasedOn`
+        readonly OS
+        readonly DistroBasedOn
+        readonly KERNEL
+        readonly MACH
+    fi
+
 fi
-if [ -f /etc/system-release ]; then
-  REDHAT=1
-fi
-if test $REDHAT; then
-  PM=yum
-  LM="rpm -qa"
-  VIM=vim-enhanced
-  CTAGS=ctags
-fi
+
+
 VIM_PKG=$($LM | grep $VIM)
 if [ -z "$VIM_PKG" ]; then
-  sudo $PM install $VIM -y
+   $INSTALL_PREFIX $PM install $VIM
 fi
 CTAGS_PKG=$($LM | grep $CTAGS)
 if [ -z "$CTAGS_PKG" ]; then
-  sudo $PM install $CTAGS -y
+   $INSTALL_PREFIX $PM install $CTAGS
 fi
-SCREEN_PKG=$($LM | grep screen)
-if [ -z "$SCREEN_PKG" ]; then
-  sudo $PM install screen -y
-fi
+
 VI=$(which vi 2> /dev/null)
 if [[ -z "$VI" || ! -L /usr/bin/vi ]]; then
   echo -n "The vi command is not using the enhanced features of vim currently.  Would you like to use vim instead? (y/N): "; read -n 1 PROCEED
@@ -100,11 +132,14 @@ git submodule add git@github.com:dracula/vim.git bundle/dracula-theme
 git submodule update --init
 git submodule add git@github.com:mileszs/ack.vim.git bundle/ack
 git submodule update --init
-git submodule add git@github.com:vim-airline/vim-airline-themes.git bundle vim-airline-themes
+git submodule add git@github.com:vim-airline/vim-airline-themes.git bundle/vim-airline-themes
 git submodule update --init
 git submodule add git@github.com:vim-airline/vim-airline.git bundle/vim-airline
-git submodule --init
+git submodule update --init
 git submodule add git@github.com:tpope/vim-repeat.git bundle/vim-repeat
+git submodule update --init
+git submodule add git@github.com:powerline/fonts.git bundle/powerline-fonts
+git submodule update --init
 
 
 cat << "EOF" >> ~/.vimrc
