@@ -100,10 +100,12 @@ git submodule add git@github.com:dracula/vim.git bundle/dracula-theme
 git submodule update --init
 git submodule add git@github.com:mileszs/ack.vim.git bundle/ack
 git submodule update --init
-git submodule add git@github.com:vim-airline/vim-airline-themes.git
+git submodule add git@github.com:vim-airline/vim-airline-themes.git bundle vim-airline-themes
 git submodule update --init
-git submodule add git@github.com:vim-airline/vim-airline.git
+git submodule add git@github.com:vim-airline/vim-airline.git bundle/vim-airline
 git submodule --init
+git submodule add git@github.com:tpope/vim-repeat.git bundle/vim-repeat
+
 
 cat << "EOF" >> ~/.vimrc
 " Allow Vim-only settings even if they break vi keybindings.
