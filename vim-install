@@ -211,7 +211,6 @@ set noswapfile
 set hidden "opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.DS_Store,*.sql     "MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  "Windows
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_cmd = 'CtrlP'
 
@@ -248,7 +247,7 @@ autocmd BufWritePre *.css,*.inc,*.install,*.js,*.module,*.php,*.profile,*.scss,*
 nnoremap <silent> <F6> :ScreenShell compass watch<CR>
 
 " Toggle the NERDTree window
-nnoremap <silent> <F7> :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>d :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeDirArrows=1
 let NERDTreeAutoDeleteBuffer=1
