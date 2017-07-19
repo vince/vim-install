@@ -99,6 +99,12 @@ git submodule update --init
 git submodule add git@github.com:dracula/vim.git bundle/dracula-theme
 git submodule update --init
 git submodule add git@github.com:mileszs/ack.vim.git bundle/ack
+git submodule update --init
+git submodule add git@github.com:vim-airline/vim-airline-themes.git
+git submodule update --init
+git submodule add git@github.com:vim-airline/vim-airline.git
+git submodule --init
+
 cat << "EOF" >> ~/.vimrc
 " Allow Vim-only settings even if they break vi keybindings.
 set nocompatible
@@ -199,6 +205,22 @@ let g:syntastic_style_warning_symbol = 'S⚠'
 let g:syntastic_warning_symbol = '⚠'
 highlight SyntasticErrorLine guibg=red
 highlight SyntasticWarningLine guibg=yellow
+
+" Vince's modifications
+set noswapfile
+set hidden "opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.DS_Store,*.sql     "MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  "Windows
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+
+" vim-airline configuration
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline_powerline_fonts=1
+let g:airline_theme='powerlineish'
 
 " Toggle line numbers
 nnoremap <silent> <F4> :set invnumber<CR>
