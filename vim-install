@@ -96,6 +96,9 @@ git submodule add https://github.com/joonty/vdebug.git bundle/vdebug
 git submodule update --init
 git submodule add http://git.drupal.org/project/vimrc.git bundle/drupalvim
 git submodule update --init
+git submodule add git@github.com:dracula/vim.git bundle/dracula-theme
+git submodule update --init
+git submodule add git@github.com:mileszs/ack.vim.git bundle/ack
 cat << "EOF" >> ~/.vimrc
 " Allow Vim-only settings even if they break vi keybindings.
 set nocompatible
@@ -173,8 +176,8 @@ if ! has("gui_running")
  set t_Co=256
 endif
 " feel free to choose :set background=dark for a different style
-set background=light
-colors peaksea
+set background=dark
+colors dracula
 
 " Check syntax
 nnoremap <silent> <F3> :SyntasticCheck<CR>
@@ -228,4 +231,9 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " Toggle current fold open/closed
 nnoremap <Space> za
+
+" Use the silver searcher (Ag) instead of Ack if available
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 EOF
