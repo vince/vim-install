@@ -114,8 +114,6 @@ git submodule add https://github.com/ervandew/screen.git bundle/screen
 git submodule update --init
 git submodule add https://github.com/msanders/snipmate.vim.git bundle/snipmate
 git submodule update --init
-git submodule add https://github.com/ervandew/supertab.git bundle/supertab
-git submodule update --init
 git submodule add https://github.com/tpope/vim-surround.git bundle/surround
 git submodule update --init
 git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
@@ -290,7 +288,6 @@ let NERDTreeDirArrows=1
 let NERDTreeAutoDeleteBuffer=1
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Toggle the Tagbar window
 nnoremap <silent> <F8> :TagbarToggle<CR>
