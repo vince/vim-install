@@ -168,8 +168,10 @@ set linebreak               "Break lines when appropriate
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set autoindent
 set smartindent
+set smarttab
 set maxmempattern=2000000   "Don't limit memory usage
 set maxmemtot=2000000
 set viminfo='20,<1000,s10,h "Copy up to 1000 lines per register (default is 50)
@@ -248,6 +250,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.DS_Store,*.sql     "MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  "Windows
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|sql)$'
 
 " vim-airline configuration
 set laststatus=2
