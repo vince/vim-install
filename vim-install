@@ -122,21 +122,21 @@ git submodule add https://github.com/majutsushi/tagbar.git bundle/tagbar
 git submodule update --init
 git submodule add https://github.com/joonty/vdebug.git bundle/vdebug
 git submodule update --init
-git submodule add git@github.com:dracula/vim.git bundle/dracula-theme
+git submodule add https://github.com/dracula/vim.git bundle/dracula-theme
 git submodule update --init
-git submodule add git@github.com:vim-airline/vim-airline-themes.git bundle/vim-airline-themes
+git submodule add https://github.com/vim-airline/vim-airline-themes.git bundle/vim-airline-themes
 git submodule update --init
-git submodule add git@github.com:vim-airline/vim-airline.git bundle/vim-airline
+git submodule add https://github.com/vim-airline/vim-airline.git bundle/vim-airline
 git submodule update --init
-git submodule add git@github.com:tpope/vim-repeat.git bundle/vim-repeat
+git submodule add https://github.com/tpope/vim-repeat.git bundle/vim-repeat
 git submodule update --init
-git submodule add git@github.com:garbas/vim-snipmate.git bundle/vim-snipmate
+git submodule add https://github.com/garbas/vim-snipmate.git bundle/vim-snipmate
 git submodule update --init
-git submodule add git@github.com:activebridge/rails-snippets.git bundle/rails-snippets
+git submodule add https://github.com/activebridge/rails-snippets.git bundle/rails-snippets
 git submodule update --init
-git submodule add git@github.com:tomtom/tlib_vim.git bundle/tlib_vim
+git submodule add https://github.com/tomtom/tlib_vim.git bundle/tlib_vim
 git submodule update --init
-git submodule add git@github.com:MarcWeber/vim-addon-mw-utils.git bundle/vim-addon-mw-utils
+git submodule add https://github.com/MarcWeber/vim-addon-mw-utils.git bundle/vim-addon-mw-utils
 git submodule update --init
 
 cat << "EOF" >> ~/.vimrc
