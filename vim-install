@@ -172,6 +172,9 @@ set smartindent
 set smarttab
 set viminfo='20,<1000,s10,h "Copy up to 1000 lines per register (default is 50)
 
+" Enable CursorLine
+set cursorline
+
 " Persistent Undo (vim 7.3 and later)
 if exists('&undofile') && !&undofile
   set undodir=~/.vim_runtime/undodir
