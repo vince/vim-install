@@ -183,15 +183,6 @@ if &t_Co > 1
 endif
 syntax on
 
-" When in split screen, map <C-LeftArrow> and <C-RightArrow> to switch panes.
-nn [5C <C-W>w
-nn [5R <C-W>W
-
-" Custom key mapping
-map <S-u> :redo<cr>
-map <C-n> :tabn<cr>
-map <C-p> :tabp<cr>
-
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
@@ -274,7 +265,8 @@ autocmd BufWritePre *.css,*.inc,*.install,*.js,*.module,*.php,*.profile,*.scss,*
 nnoremap <silent> <F6> :ScreenShell compass watch<CR>
 
 " Toggle the NERDTree window
-nnoremap <silent> <Leader>d :NERDTreeFind<CR>
+"nnoremap <silent> <Leader>d :NERDTreeFind<CR>
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 let NERDTreeShowHidden=0
 let NERDTreeDirArrows=1
 let NERDTreeAutoDeleteBuffer=1
@@ -306,5 +298,13 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" More Custom key mapping
+map <S-u> :redo<cr>
+map <C-n> :tabn<cr>
+map <C-p> :tabp<cr>
+
+" Override NERDSnippet key. Not sure what this does but it conflicts with tabbing between buffers
+let g:NERDSnippets_key="<F7><F7>"
 
 EOF
