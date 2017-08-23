@@ -110,8 +110,6 @@ git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
 git submodule update --init
 git submodule add https://github.com/ervandew/screen.git bundle/screen
 git submodule update --init
-git submodule add https://github.com/msanders/snipmate.vim.git bundle/snipmate
-git submodule update --init
 git submodule add https://github.com/tpope/vim-surround.git bundle/surround
 git submodule update --init
 git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
@@ -121,8 +119,6 @@ git submodule update --init
 git submodule add https://github.com/majutsushi/tagbar.git bundle/tagbar
 git submodule update --init
 git submodule add https://github.com/joonty/vdebug.git bundle/vdebug
-git submodule update --init
-git submodule add https://github.com/dracula/vim.git bundle/dracula-theme
 git submodule update --init
 git submodule add https://github.com/vim-airline/vim-airline-themes.git bundle/vim-airline-themes
 git submodule update --init
@@ -213,7 +209,7 @@ if ! has("gui_running")
 endif
 " feel free to choose :set background=dark for a different style
 set background=dark
-colors dracula
+colors distinguished
 
 let g:AutoClosePairs = {'<': '>', '%': '%', '(': ')', '{': '}', '[': ']', '"': '"', "'": "'"}
 
