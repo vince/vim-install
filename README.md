@@ -1,6 +1,6 @@
 Introduction
 ------------
-This bash script will install vim and supporting plugins to provide an optimized editor (IDE?) experience for Drupal development
+This bash script will install vim and supporting plugins to provide an optimized editor experience for rails development
 
 Installation
 ------------
