@@ -120,6 +120,8 @@ git submodule add https://github.com/majutsushi/tagbar.git bundle/tagbar
 git submodule update --init
 git submodule add https://github.com/joonty/vdebug.git bundle/vdebug
 git submodule update --init
+git submodule add https://github.com/Townk/vim-autoclose.git bundle/autoclose
+git submodule update --init
 git submodule add https://github.com/vim-airline/vim-airline-themes.git bundle/vim-airline-themes
 git submodule update --init
 git submodule add https://github.com/vim-airline/vim-airline.git bundle/vim-airline
