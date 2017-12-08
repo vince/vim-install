@@ -102,8 +102,6 @@ git submodule add https://github.com/kien/ctrlp.vim.git bundle/ctrlp
 git submodule update --init
 git submodule add https://github.com/tpope/vim-fugitive.git bundle/fugitive
 git submodule update --init
-git submodule add https://github.com/wookiehangover/jshint.vim.git bundle/jshint
-git submodule update --init
 git submodule add https://github.com/scrooloose/nerdcommenter.git bundle/nerdcommenter
 git submodule update --init
 git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
@@ -112,7 +110,7 @@ git submodule add https://github.com/ervandew/screen.git bundle/screen
 git submodule update --init
 git submodule add https://github.com/tpope/vim-surround.git bundle/surround
 git submodule update --init
-git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
+git submodule add https://github.com/vim-syntastic/syntastic.git bundle/syntastic
 git submodule update --init
 git submodule add https://github.com/vim-scripts/SyntaxComplete.git bundle/syntaxcomplete
 git submodule update --init
@@ -308,5 +306,15 @@ map <C-p> :tabp<cr>
 
 " Override NERDSnippet key. Not sure what this does but it conflicts with tabbing between buffers
 let g:NERDSnippets_key="<F7><F7>"
+
+" Syntastic recommended settings (via github page
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 EOF
