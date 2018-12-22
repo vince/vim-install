@@ -167,6 +167,13 @@ set autoindent
 set smartindent
 set smarttab
 set viminfo='20,<1000,s10,h "Copy up to 1000 lines per register (default is 50)
+"set showcmd            " Show (partial) command in status line.
+set ignorecase         " Do case insensitive matching
+set smartcase          " Do smart case matching
+set incsearch          " Incremental search
+"set autowrite          " Automatically save before commands like :next and :make
+"set hidden             " Hide buffers when they are abandoned
+set mouse=a            " Enable mouse usage (all modes)
 
 " Enable CursorLine
 set cursorline
