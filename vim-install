@@ -22,6 +22,7 @@ MACH=`uname -m`
 
 if [ "{$OS}" == "windowsnt" ]; then
     OS=windows
+    INSTALL_CMD="install"
 elif [ "{$OS}" == "darwin" ]; then
     OS=mac
     PM=brew
@@ -30,6 +31,7 @@ elif [ "{$OS}" == "darwin" ]; then
     CTAGS=ctags
     REDHAT=
     INSTALL_PREFIX=
+    INSTALL_CMD="install"
 else
     OS=`uname`
     if [ "${OS}" = "Linux" ] ; then
@@ -40,6 +42,14 @@ else
             LM="rpm -qa"
             VIM=vim-enhanced
             CTAGS=ctags
+            INSTALL_CMD="install"
+        elif [ -f /etc/arch-release ] ; then
+            DistroBasedOn='ArchLinux'
+            PM=pacman
+            LM="pacman -Ss"
+            VIM=vim
+            CTAGS=ctags
+            INSTALL_CMD="-S"
         elif [ -f /etc/debian_version ] ; then
             DistroBasedOn='Debian'
             PM=apt-get
@@ -47,6 +57,7 @@ else
             VIM=vim-nox
             CTAGS=exuberant-ctags
             REDHAT=
+            INSTALL_CMD="install"
         fi
         if [ -f /etc/UnitedLinux-release ] ; then
             DIST="${DIST}[`cat /etc/UnitedLinux-release | tr "\n" ' ' | sed s/VERSION.*//`]"
@@ -64,11 +75,11 @@ fi
 
 VIM_PKG=$($LM | grep $VIM)
 if [ -z "$VIM_PKG" ]; then
-   $INSTALL_PREFIX $PM install $VIM
+   $INSTALL_PREFIX $PM $INSTALL_CMD $VIM
 fi
 CTAGS_PKG=$($LM | grep $CTAGS)
 if [ -z "$CTAGS_PKG" ]; then
-   $INSTALL_PREFIX $PM install $CTAGS
+   $INSTALL_PREFIX $PM $INSTALL_CMD $CTAGS
 fi
 
 VI=$(which vi 2> /dev/null)
@@ -173,7 +184,7 @@ set smartcase          " Do smart case matching
 set incsearch          " Incremental search
 "set autowrite          " Automatically save before commands like :next and :make
 "set hidden             " Hide buffers when they are abandoned
-set mouse=a            " Enable mouse usage (all modes)
+"set mouse=a            " Enable mouse usage (all modes)
 
 " Enable CursorLine
 set cursorline
