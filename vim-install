@@ -335,4 +335,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+if has("gui_running")
+   " GUI is running or is about to start.
+   " Maximize gvim window (for an alternative on Windows, see simalt below).
+   set lines=999 columns=999
+   set gfn=FreeMono\ 13
+   nmap <C-V> "+gP
+   imap <C-V> <ESC><C-V>i
+   vmap <C-C> "+y
+ endif
+
 EOF
