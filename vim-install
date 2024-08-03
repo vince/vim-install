@@ -36,7 +36,14 @@ else
     OS=`uname`
     if [ "${OS}" = "Linux" ] ; then
       INSTALL_PREFIX="sudo"
-        if [ -f /etc/redhat-release ] ; then
+        if [ -f /etc/fedora-release ] ; then
+            DistroBasedOn='FedoraLinux'
+            PM=dnf
+            LM="dnf search"
+            VIM=vim-enhanced
+            CTAGS=ctags
+            INSTALL_CMD="install"
+        elif [ -f /etc/redhat-release ] ; then
             DistroBasedOn='RedHat'
             PM=yum
             LM="rpm -qa"
